@@ -138,20 +138,18 @@
 		## stored in results.xxxx_xxxx_confint.  Results are NOT automatically generated.
 		## To generate Results, uncomment print section.
 
+#load packages
+#library
+library(dplyr)
+library(tidyverse)
 
+#=====import data======
+#relative pathname
+pcr <- file.path(".", "Data", "Summary_PCR_RawData.csv")
+print(pcr)
 
-
-
-## Set Working Directory
-	setwd("E:/Spider_Bootstrap")
-	getwd()
-
-
-
-## Import Raw Data with Row and Column Labels
-dataset <- read.table("Summary_PCR.txt", header=TRUE, sep = "\t", as.is=TRUE)
-
-
+#import data
+dataset<- read_csv(pcr)
 
 ## Settings
 alpha <- 0.05				## 95% Confidence Interval
