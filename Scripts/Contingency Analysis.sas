@@ -1,0 +1,205 @@
+/* Spider Food Web Testing */
+
+/* Import Data */
+DATA WEB;
+LENGTH YEAR $4. SEASON $6. PREY $9.;
+INPUT YEAR $ SEASON $ PREY $ COUNT;
+DATALINES;
+2009 SPRING SPIDER 5
+2009 SUMMER SPIDER 59
+2009 FALL SPIDER 45
+2010 SPRING SPIDER 41
+2010 SUMMER SPIDER 80
+2010 FALL SPIDER 19
+2011 SPRING SPIDER 72
+2011 SUMMER SPIDER 151
+2011 FALL SPIDER 67
+2012 SPRING SPIDER 44
+2012 SUMMER SPIDER 84
+2012 FALL SPIDER 31
+2009 SPRING NONSPIDER 18
+2009 SUMMER NONSPIDER 28
+2009 FALL NONSPIDER 68
+2010 SPRING NONSPIDER 50
+2010 SUMMER NONSPIDER 32
+2010 FALL NONSPIDER 44
+2011 SPRING NONSPIDER 125
+2011 SUMMER NONSPIDER 81
+2011 FALL NONSPIDER 167
+2012 SPRING NONSPIDER 66
+2012 SUMMER NONSPIDER 60
+2012 FALL NONSPIDER 51
+;
+
+/* Verify Data Import */
+TITLE 'Verify Data Import';
+PROC PRINT DATA = WEB;
+RUN;
+
+PROC CONTENTS DATA = WEB;
+RUN;
+
+TITLE 'Frequency Table';
+PROC FREQ DATA = WEB;
+TABLES prey*year*season;
+WEIGHT count;
+RUN;
+
+
+/* Y = year; S = season; P = prey */
+
+
+/* Run Analysis (YSP)*/
+TITLE '(YSP) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY YEAR*SEASON YEAR*PREY SEASON*PREY YEAR*SEASON*PREY /
+	DIST = POISSON /* uses the poisson log link */
+	LINK = LOG
+	TYPE3 /*Requests that statistics for Type 3 contrasts be computed for each effect specified in the 
+MODEL statement.*/
+	OBSTATS /*Specifies that an additional table of statistics be displayed.*/
+	/* LRCI requests likelihood ratio confidence intervals instead of wald. */
+	;
+RUN;
+	
+	
+	
+/* Run Analysis (YS, YP, SP)*/
+TITLE '(YS, YP, SP) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY YEAR*SEASON YEAR*PREY SEASON*PREY /
+	DIST = POISSON /* uses the poisson log link */
+	LINK = LOG
+	TYPE3
+	OBSTATS;
+RUN;
+
+
+	
+/* Run Analysis (YS, YP)*/
+TITLE '(YS, YP) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY YEAR*SEASON YEAR*PREY /
+	DIST = POISSON
+	LINK = LOG
+	TYPE3
+	OBSTATS
+	;
+RUN;
+
+	
+
+/* Run Analysis (YS, SP)*/
+TITLE '(YS, SP) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY YEAR*SEASON SEASON*PREY /
+	DIST = POISSON
+	LINK = LOG
+	TYPE3
+	OBSTATS
+	;
+RUN;
+
+
+
+/* Run Analysis (YP, SP)*/
+TITLE '(YP, SP) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY YEAR*PREY SEASON*PREY /
+	DIST = POISSON
+	LINK = LOG
+	TYPE3
+	OBSTATS
+	;
+RUN;
+
+	
+	
+/* Run Analysis (Y, SP)*/
+TITLE '(Y, SP) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY SEASON*PREY /
+	DIST = POISSON
+	LINK = LOG
+	TYPE3
+	OBSTATS
+	;
+RUN;
+
+
+
+/* Run Analysis (S, YP)*/
+TITLE '(S, YP) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY YEAR*PREY /
+	DIST = POISSON
+	LINK = LOG
+	TYPE3
+	OBSTATS
+	;
+RUN;
+
+
+	
+/* Run Analysis (P, YS)*/
+TITLE '(P, YS) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY YEAR*SEASON /
+	DIST = POISSON
+	LINK = LOG
+	TYPE3
+	OBSTATS
+	;
+RUN;
+
+	
+	
+/* Run Analysis (Y, S, P)*/
+TITLE '(Y, S, P) Analysis';
+PROC GENMOD DATA = web order = data;
+CLASS YEAR(PARAM=REF) SEASON(PARAM=REF) PREY(PARAM=REF);
+MODEL COUNT = YEAR SEASON PREY /
+	DIST = POISSON
+	LINK = LOG
+	TYPE3
+	OBSTATS
+	;
+RUN;
+
+
+
+/* INDEPENDENCE ANALYSIS FOR (YS,SP) Model (conditional on season) */
+TITLE 'Independence Analysis for (YS, SP) (conditional on season)';
+PROC SORT DATA = web OUT = web_sorted_by_season;
+BY SEASON;
+RUN;
+
+PROC FREQ DATA = web_sorted_by_season ORDER = data;
+TABLE YEAR*PREY / CHISQ CL;
+EXACT FISHER;
+WEIGHT COUNT;
+BY SEASON;
+RUN;
+
+
+
+/* INDEPENDENCE ANALYSIS FOR (YS,YP) Model (conditional on year) */
+TITLE 'Independence Analysis for (YS, YP) (conditional on year)';
+PROC SORT DATA = web OUT = web_sorted_by_year;
+BY YEAR;
+RUN;
+
+PROC FREQ DATA = web_sorted_by_year ORDER = data;
+TABLE SEASON*PREY / CHISQ CL;
+EXACT FISHER;
+WEIGHT COUNT;
+BY YEAR;
+RUN;
