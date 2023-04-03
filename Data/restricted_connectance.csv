@@ -1,8 +1,0 @@
-Category,Test,Metric,Median,Lower,Upper
-Years,2009,Restricted connectance,0.2202381,0.1904762,0.25
-Years,2010,Restricted connectance,0.2261905,0.1964286,0.2559524
-Years,2011,Restricted connectance,0.2261905,0.1964286,0.2619048
-Years,2012,Restricted connectance,0.2261905,0.1964286,0.2559524
-Seasons,Spring,Restricted connectance,0.2202381,0.1904762,0.25
-Seasons,Summer,Restricted connectance,0.25,0.2142857,0.2797619
-Seasons,Fall,Restricted connectance,0.2678571,0.2379464,0.297619
