@@ -1,0 +1,86 @@
+Metadata for manuscript entitled “Temporal constancy in the structure of a spider-focused food web with high rates of intraguild predation”.
+
+Repository description:
+
+R scripts, SAS models, description of analyses, and data used to estimate how interaction evenness, restricted connectance, and intraguild predation changed as a function of year and season in a spider-focused forest-floor food web. 
+
+Authors: 
+David H. Wise
+Department of Biological Sciences, University of Illinois, Chicago, IL 60607, USA
+dhwise.uic@gmail.com
+
+Robin M. Mores 
+2474 N. Lake Shore Drive, Apt. 4708, Chicago, IL  60611, USA
+rmores.uic@gmail.com
+
+Jennifer Pajda-De La O
+Department of Mathematics, Statistics, and Computer Science, University of Illinois, Chicago, IL, 60607, USA
+jpajda2@uic.edu
+
+Matthew A. McCary
+Department of BioSciences, Rice University, Houston, TX 77005, USA
+matt.mccary@gmail.com
+
+File list (files can be found at https://github.com/mmccar26/spider-focused-food-web):
+
+Contingency_4x3x2_Analysis_Description.odt
+Contingency Analysis.sas
+Figs. 4-7.R
+IGP-season-by-year.csv
+interaction_evenness.csv
+intraguild_predation.csv
+restricted_connectance.csv
+PCR Bootstrapping Analysis.R
+Season_Fall_PCR.txt
+Season_Spring_PCR.txt
+Season_Summer_PCR.txt
+Spider-food-web.Rproj
+Summary_PCR.txt
+Summary_PCR_RawData.csv
+Year_2009_PCR.txt
+Year_2010_PCR.txt
+Year_2011_PCR.txt
+Year_2012_PCR.txt
+4x3x2_IGP_Data_Matrix.xlsx
+
+File descriptions:
+
+Contingency_4x3x2_Analysis_Description.odt:  The full description of the 4 x 3 x 2 contingency table analysis using a log-linear model with a log link function and a Poisson distribution to test if there is an interaction between year and season for spider intraguild predation.
+
+Contingency Analysis.sas:  The code to run the 4 x 3 x 2 contingency table analysis; the analysis was performed using SAS.
+
+Figs. 4-7.R:  The underlying R code to recreate Figures 4 to 7 presented in the main manuscript, which presents the results on interaction evenness, restricted connectance, and intraguild predation. This code requires importing files “IGP-season-by-year.csv”, “interaction_evenness.csv”, “intraguild_predation.csv”, and “restricted_connectance.csv” to run.
+
+IGP-season-by-year.csv:  Data on the changes in spider intraguild predation by year and season. This file supports the data shown in Figure 7 of the manuscript.
+
+interaction_evenness.csv:  Data for showing interaction evenness pooled by year and season. This file supports the data shown in Figure 5 of the manuscript.
+
+intraguild_predation.csv:  Data for showing percent intraguild predation pooled by year and season. This file supports the data shown in Figure 6 of the manuscript.
+
+restricted_connectance.csv:  Data for showing percent intraguild predation pooled by year and season. This file supports the data shown in Figure 6 of the manuscript.
+
+PCR Bootstrapping Analysis.R:  The underlying R code to calculate the PCR-based bootstrapped-derived confidence intervals (BCI’s) for two indices of overall network structure, restricted connectance and interaction evenness, overlapped broadly across both years and seasons.
+
+Season_Fall_PCR.txt:  The spider food web interaction matrix for the Fall season. This data helps support Figure 3 in the main text.
+
+Season_Spring_PCR.txt:  The spider food web interaction matrix for the Spring season. This data helps support Figure 3 in the main text.
+
+Season_Summer_PCR.txt:  The spider food web interaction matrix for the Fall season. This data helps support Figure 3 in the main text.
+
+Spider-food-web.Rproj:  The R Studio Project that hosts the R environment to run most of the analyses (i.e., the scripts named “PCR Bootstrapping Analysis.R” and “Figs. 4-7.R”).
+
+Summary_PCR.txt:  The basic interaction matrix for the full summary spider food web. This data helps support Figure 1 in the main text.
+
+Summary_PCR_RawData.csv:  The raw PCR data for calculating the PCR-based bootstrapped-derived confidence intervals (BCI’s) for two indices of overall network structure, restricted connectance and interaction evenness, overlapped broadly across both years and seasons.
+Year_2009_PCR.txt:  The spider food web interaction matrix for the year 2009. This data helps support Figure 2 in the main text.
+
+Year_2010_PCR.txt:  The spider food web interaction matrix for the year 2010. This data helps support Figure 2 in the main text.
+
+Year_2011_PCR.txt:  The spider food web interaction matrix for the year 2011. This data helps support Figure 2 in the main text.
+
+Year_2012_PCR.txt: The spider food web interaction matrix for the year 2012. This data helps support Figure 2 in the main text.
+
+4x3x2_IGP_Data_Matrix.xlsx:  The data used to run the 4 x 3 x 2 contingency table analysis using a log-linear model with a log link function and a Poisson distribution.
+
+Note: All R files must be imported into your working directory for the analysis to work. The 4x3x2 Contingency Analysis was conducted using SAS; the underlying code is provided in “Contingency Analysis.sas” with the underlying description provided the file named “Contingency_4x3x2_Analysis_Description.odt”.
+
