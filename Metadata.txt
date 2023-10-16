@@ -1,4 +1,4 @@
-Metadata for manuscript entitled ìTemporal constancy in the structure of a spider-focused food web with high rates of intraguild predationî.
+Metadata for manuscript entitled ‚ÄúPattern of seasonal variation in rates of predation between spider families is temporally stable in a food web with widespread intraguild predation‚Äù.
 
 Repository description:
 
@@ -49,7 +49,7 @@ Contingency_4x3x2_Analysis_Description.odt:  The full description of the 4 x 3 x
 
 Contingency Analysis.sas:  The code to run the 4 x 3 x 2 contingency table analysis; the analysis was performed using SAS.
 
-Figs. 4-7.R:  The underlying R code to recreate Figures 4 to 7 presented in the main manuscript, which presents the results on interaction evenness, restricted connectance, and intraguild predation. This code requires importing files ìIGP-season-by-year.csvî, ìinteraction_evenness.csvî, ìintraguild_predation.csvî, and ìrestricted_connectance.csvî to run.
+Figs. 4-7.R:  The underlying R code to recreate Figures 4 to 7 presented in the main manuscript, which presents the results on interaction evenness, restricted connectance, and intraguild predation. This code requires importing files ‚ÄúIGP-season-by-year.csv‚Äù, ‚Äúinteraction_evenness.csv‚Äù, ‚Äúintraguild_predation.csv‚Äù, and ‚Äúrestricted_connectance.csv‚Äù to run.
 
 IGP-season-by-year.csv:  Data on the changes in spider intraguild predation by year and season. This file supports the data shown in Figure 7 of the manuscript.
 
@@ -59,7 +59,7 @@ intraguild_predation.csv:  Data for showing % IGPrey pooled by year and season. 
 
 restricted_connectance.csv:  Data for showing % IGPrey pooled by year and season. This file supports the data shown in Figure 6 of the manuscript.
 
-PCR Bootstrapping Analysis.R:  The underlying R code to calculate the PCR-based bootstrapped-derived confidence intervals (BCIís) for two indices of overall network structure, restricted connectance and interaction evenness, overlapped broadly across both years and seasons.
+PCR Bootstrapping Analysis.R:  The underlying R code to calculate the PCR-based bootstrapped-derived confidence intervals (BCI‚Äôs) for two indices of overall network structure, restricted connectance and interaction evenness, overlapped broadly across both years and seasons.
 
 Season_Fall_PCR.txt:  The spider food web interaction matrix for the Fall season. This data helps support Figure 3 in the main text.
 
@@ -67,11 +67,11 @@ Season_Spring_PCR.txt:  The spider food web interaction matrix for the Spring se
 
 Season_Summer_PCR.txt:  The spider food web interaction matrix for the Fall season. This data helps support Figure 3 in the main text.
 
-Spider-food-web.Rproj:  The R Studio Project that hosts the R environment to run most of the analyses (i.e., the scripts named ìPCR Bootstrapping Analysis.Rî and ìFigs. 4-7.Rî).
+Spider-food-web.Rproj:  The R Studio Project that hosts the R environment to run most of the analyses (i.e., the scripts named ‚ÄúPCR Bootstrapping Analysis.R‚Äù and ‚ÄúFigs. 4-7.R‚Äù).
 
 Summary_PCR.txt:  The basic interaction matrix for the full summary spider food web. This data helps support Figure 1 in the main text.
 
-Summary_PCR_RawData.csv:  The raw PCR data for calculating the PCR-based bootstrapped-derived confidence intervals (BCIís) for two indices of overall network structure, restricted connectance and interaction evenness, overlapped broadly across both years and seasons.
+Summary_PCR_RawData.csv:  The raw PCR data for calculating the PCR-based bootstrapped-derived confidence intervals (BCI‚Äôs) for two indices of overall network structure, restricted connectance and interaction evenness, overlapped broadly across both years and seasons.
 
 Year_2009_PCR.txt:  The spider food web interaction matrix for the year 2009. This data helps support Figure 2 in the main text.
 
@@ -83,5 +83,5 @@ Year_2012_PCR.txt: The spider food web interaction matrix for the year 2012. Thi
 
 4x3x2_IGP_Data_Matrix.xlsx:  The data used to run the 4 x 3 x 2 contingency table analysis using a log-linear model with a log link function and a Poisson distribution.
 
-Note: All R files must be imported into your working directory for the analysis to work. The 4x3x2 Contingency Analysis was conducted using SAS; the underlying code is provided in ìContingency Analysis.sasî with the underlying description provided the file named ìContingency_4x3x2_Analysis_Description.odtî.
+Note: All R files must be imported into your working directory for the analysis to work. The 4x3x2 Contingency Analysis was conducted using SAS; the underlying code is provided in ‚ÄúContingency Analysis.sas‚Äù with the underlying description provided the file named ‚ÄúContingency_4x3x2_Analysis_Description.odt‚Äù.
 
